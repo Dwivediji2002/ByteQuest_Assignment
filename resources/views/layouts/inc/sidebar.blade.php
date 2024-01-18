@@ -4,20 +4,20 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active">
+          <li class="nav-item {{ Request::is('dashboard') ? 'active':'' }}">
               <a class="nav-link" href="{{ url ('dashboard') }}">
                 <i class="material-icons">dashboard</i>
                 <p>Dashboard</p>
               </a>
           </li>
 
-          <li class="nav-item ">
+          <li class="nav-item {{ Request::is('products') ? 'active':'' }}">
             <a class="nav-link" href="{{ url ('products') }}">
               <i class="material-icons">person</i>
               <p>Product</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item {{ Request::is('add-product') ? 'active':'' }}">
             <a class="nav-link" href="{{ url ('add-product') }}">
               <i class="material-icons">person</i>
               <p>Add Product</p>
