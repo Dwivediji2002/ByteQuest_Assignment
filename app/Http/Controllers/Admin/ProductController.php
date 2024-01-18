@@ -44,7 +44,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('/dashboard')->with('status', "Product saved successfully");
+        return redirect('/dashboard')->with('status', "Product has been inserted successfully");
     }
 
     public function edit($id)
@@ -82,4 +82,21 @@ class ProductController extends Controller
 
         return redirect('dashboard')->with('status', 'Product was Updated Successfully');
     }
+
+    public function delete($id)
+    {
+        $product = Product::find($id);
+        if($product->image)
+        {
+            $path = 'assets/uploads/product/'.$product->image;
+            if(File::exists($path))
+            {
+                File::delete($path);
+            }
+        }
+        $product->delete();
+        return redirect('products')->with('status', 'Your product has been deleted Successfully');
+    }
+        // Here I'm using the sweet alert for displaying the alert message which is javascript's library function
+        
 }

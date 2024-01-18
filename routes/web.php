@@ -1,6 +1,5 @@
 <?php 
 
-// File: routes\web.php
 
 use App\Http\Controllers\Admin\FrontendController;
 use App\Http\Controllers\Admin\ProductController;
@@ -22,4 +21,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('insert-product', [ProductController::class, 'insert'])->name('product.insert');
     Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('update-product/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::get('delete-product/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
+
+    // We can also use delete, insert and update methods to delete a product, insert a new product and update the existing
+    // But here I'm using the get method 
 });
